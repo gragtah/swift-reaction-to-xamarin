@@ -27,18 +27,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         manager = CLLocationManager()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestAlwaysAuthorization()
+        manager.requestAlwaysAuthorization()    //popup on iOS device that asks for permission to access location
         manager.startUpdatingLocation()
         
         //Setup our Map View
         theMap.delegate = self
-        theMap.mapType = MKMapType.Satellite
+        theMap.mapType = MKMapType.Satellite   //Satellite or choose MKMapType.Standard and MKMapType.Hybrid
         theMap.showsUserLocation = true
     }
     
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
         theLabel.text = "\(locations[0])"
-        myLocations.append(locations[0] as! CLLocation)
+        myLocations.append(locations[0] )
         
         let spanX = 0.007
         let spanY = 0.007
