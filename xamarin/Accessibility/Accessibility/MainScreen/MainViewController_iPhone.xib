@@ -15,6 +15,7 @@
                 <outlet property="lblSpeed" destination="17" id="29"/>
                 <outlet property="lblTrueHeading" destination="21" id="30"/>
                 <outlet property="view" destination="1" id="7"/>
+                <outlet property="mapView" destination="38" id="name-outlet-38"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

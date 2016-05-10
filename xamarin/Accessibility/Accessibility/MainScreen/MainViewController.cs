@@ -61,11 +61,6 @@ namespace Accessibility
 			// you can also use presets, which simply evalute to a double value:
 			//iPhoneLocationManager.DesiredAccuracy = CLLocation.AccuracyNearestTenMeters;
 
-//			DateTime startTime = DateTime.Now;
-//			timer1 = new System.Timers.Timer();
-//			var watch = System.Diagnostics.Stopwatch.StartNew();
-
-
 			// handle the updated location method and update the UI
 			if (UIDevice.CurrentDevice.CheckSystemVersion (6, 0)) {
 				iPhoneLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
@@ -91,10 +86,6 @@ namespace Accessibility
 				mainScreen.LblMagneticHeading.Text = e.NewHeading.MagneticHeading.ToString () + "º";
 				mainScreen.LblTrueHeading.Text = e.NewHeading.TrueHeading.ToString () + "º";
 			};
-
-//			DateTime endTime = DateTime.Now;
-
-//			Console.WriteLine (endTime - startTime);
 
 			// start updating our location, et. al.
 			if (CLLocationManager.LocationServicesEnabled)
