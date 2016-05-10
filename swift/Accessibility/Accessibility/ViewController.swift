@@ -12,31 +12,6 @@ import CoreLocation
 import MapKit
 
 import Foundation
-//import CoreFoundation
-//
-//class ParkBenchTimer {
-//    
-//    let startTime:CFAbsoluteTime
-//    var endTime:CFAbsoluteTime?
-//    
-//    init() {
-//        startTime = CFAbsoluteTimeGetCurrent()
-//    }
-//    
-//    func stop() -> CFAbsoluteTime {
-//        endTime = CFAbsoluteTimeGetCurrent()
-//        
-//        return duration!
-//    }
-//    
-//    var duration:CFAbsoluteTime? {
-//        if let endTime = endTime {
-//            return endTime - startTime
-//        } else {
-//            return nil
-//        }
-//    }
-//}
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
@@ -64,8 +39,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     }
     
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
-    
-//        let timer = ParkBenchTimer()
 
         var t = clock()
         
@@ -88,25 +61,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             theMap.addOverlay(polyline)
         }
         
-      
-        
         t = clock() - t
         
-        print("The function takes \(t) ticks, which is \(Double(t) / Double(CLOCKS_PER_SEC)) seconds of CPU time")
-//        print("The task took \(timer.stop()) seconds.")
+        print("Location update took \(t) ticks, or \(Double(t) / Double(CLOCKS_PER_SEC)) seconds of CPU time")
         
     }
-    
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        
-        if overlay is MKPolyline {
-            var polylineRenderer = MKPolylineRenderer(overlay: overlay)
-            polylineRenderer.strokeColor = UIColor.blueColor()
-            polylineRenderer.lineWidth = 4
-            return polylineRenderer
-        }
-        return nil
-    }
+//    
+//    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer! {
+//        
+//        if overlay is MKPolyline {
+//            let polylineRenderer = MKPolylineRenderer(overlay: overlay)
+//            polylineRenderer.strokeColor = UIColor.blueColor()
+//            polylineRenderer.lineWidth = 4
+//            return polylineRenderer
+//        }
+//        return nil
+//    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
