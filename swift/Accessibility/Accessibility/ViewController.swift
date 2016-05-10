@@ -11,6 +11,33 @@ import UIKit
 import CoreLocation
 import MapKit
 
+import Foundation
+//import CoreFoundation
+//
+//class ParkBenchTimer {
+//    
+//    let startTime:CFAbsoluteTime
+//    var endTime:CFAbsoluteTime?
+//    
+//    init() {
+//        startTime = CFAbsoluteTimeGetCurrent()
+//    }
+//    
+//    func stop() -> CFAbsoluteTime {
+//        endTime = CFAbsoluteTimeGetCurrent()
+//        
+//        return duration!
+//    }
+//    
+//    var duration:CFAbsoluteTime? {
+//        if let endTime = endTime {
+//            return endTime - startTime
+//        } else {
+//            return nil
+//        }
+//    }
+//}
+
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var theMap: MKMapView!
@@ -27,16 +54,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         manager = CLLocationManager()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestAlwaysAuthorization()    //popup on iOS device that asks for permission to access location
+        manager.requestAlwaysAuthorization()    //popup on iOS device for location-access permission
         manager.startUpdatingLocation()
         
         //Setup our Map View
         theMap.delegate = self
-        theMap.mapType = MKMapType.Satellite   //Satellite or choose MKMapType.Standard and MKMapType.Hybrid
+        theMap.mapType = MKMapType.Standard   //Satellite, MKMapType.Standard, MKMapType.Hybrid
         theMap.showsUserLocation = true
     }
     
     func locationManager(manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
+    
+//        let timer = ParkBenchTimer()
+
+        var t = clock()
+        
         theLabel.text = "\(locations[0])"
         myLocations.append(locations[0] )
         
@@ -55,6 +87,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let polyline = MKPolyline(coordinates: &a, count: a.count)
             theMap.addOverlay(polyline)
         }
+        
+      
+        
+        t = clock() - t
+        
+        print("The function takes \(t) ticks, which is \(Double(t) / Double(CLOCKS_PER_SEC)) seconds of CPU time")
+//        print("The task took \(timer.stop()) seconds.")
+        
     }
     
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
