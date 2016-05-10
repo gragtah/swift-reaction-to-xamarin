@@ -1,5 +1,6 @@
 using System;
 using UIKit;
+using MapKit;
 using Foundation;
 using CoreLocation;
 using Accessibility.MainScreen;
@@ -103,7 +104,7 @@ namespace Accessibility
 			ms.LblLatitude.Text = newLocation.Coordinate.Latitude.ToString () + "º";
 			ms.LblCourse.Text = newLocation.Course.ToString () + "º";
 			ms.LblSpeed.Text = newLocation.Speed.ToString () + " meters/s";
-			ms.mapView.ShowsUserLocation = true;
+//			ms.mapView.ShowsUserLocation = true;
 
 			watch.Stop ();
 			Console.WriteLine (watch.ElapsedTicks);

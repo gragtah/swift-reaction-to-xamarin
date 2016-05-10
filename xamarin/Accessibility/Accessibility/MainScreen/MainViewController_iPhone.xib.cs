@@ -65,8 +65,8 @@ namespace Accessibility.MainScreen
 			get { return this.lblTrueHeading; }
 		}
 
-		public MKMapView mapView {
-			get { return this.mapView; }
-		}
+//		public MKMapView mapView {
+//			get { return this.mapView; }
+//		}
 	}
 }

@@ -23,6 +23,6 @@ namespace Accessibility
 
 		UILabel LblTrueHeading { get; }
 
-		MKMapView mapView { get; }
+//		MKMapView mapView { get; }
 	}
 }

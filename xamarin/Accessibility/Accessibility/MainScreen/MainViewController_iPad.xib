@@ -16,7 +16,6 @@
                 <outlet property="lblSpeed" destination="17" id="29"/>
                 <outlet property="lblTrueHeading" destination="21" id="30"/>
                 <outlet property="view" destination="1" id="7"/>
-                <outlet property="mapView" destination="37" id="name-outlet-37"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -157,10 +156,6 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="37">
-                    <rect key="frame" x="108" y="407" width="533" height="508"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                </mapView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <metadata/>
