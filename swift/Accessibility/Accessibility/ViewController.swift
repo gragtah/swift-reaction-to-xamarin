@@ -36,23 +36,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         theMap.showsUserLocation = true
     }
     
-    func locationManager(manager:CLLocationManager, didUpdateLocations locations:[AnyObject]) {
+    func locationManager(manager:CLLocationManager, didUpdateLocations locations:[CLLocation]) {
         theLabel.text = "\(locations[0])"
-        myLocations.append(locations[0] as CLLocation)
+        myLocations.append(locations[0] as! CLLocation)
         
         let spanX = 0.007
         let spanY = 0.007
-        var newRegion = MKCoordinateRegion(center: theMap.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
+        let newRegion = MKCoordinateRegion(center: theMap.userLocation.coordinate, span: MKCoordinateSpanMake(spanX, spanY))
         theMap.setRegion(newRegion, animated: true)
         
         if (myLocations.count > 1){
-            var sourceIndex = myLocations.count - 1
-            var destinationIndex = myLocations.count - 2
+            let sourceIndex = myLocations.count - 1
+            let destinationIndex = myLocations.count - 2
             
             let c1 = myLocations[sourceIndex].coordinate
             let c2 = myLocations[destinationIndex].coordinate
             var a = [c1, c2]
-            var polyline = MKPolyline(coordinates: &a, count: a.count)
+            let polyline = MKPolyline(coordinates: &a, count: a.count)
             theMap.addOverlay(polyline)
         }
     }
