@@ -57,11 +57,14 @@ namespace Accessibility
 			//iPhoneLocationManager.HeadingFilter = 3; // move 3 degrees before updating
 
 			// you can also set the desired accuracy:
-			iPhoneLocationManager.DesiredAccuracy = 1000; // 1000 meters/1 kilometer
+			iPhoneLocationManager.DesiredAccuracy = 5; // 1000 meters/1 kilometer
 			// you can also use presets, which simply evalute to a double value:
 			//iPhoneLocationManager.DesiredAccuracy = CLLocation.AccuracyNearestTenMeters;
 
-			DateTime startTime = DateTime.Now;
+//			DateTime startTime = DateTime.Now;
+//			timer1 = new System.Timers.Timer();
+//			var watch = System.Diagnostics.Stopwatch.StartNew();
+
 
 			// handle the updated location method and update the UI
 			if (UIDevice.CurrentDevice.CheckSystemVersion (6, 0)) {
@@ -76,6 +79,7 @@ namespace Accessibility
 				};
 				#pragma warning restore 618
 			}
+		
 
 			//iOS 8 requires you to manually request authorization now - Note the Info.plist file has a new key called requestWhenInUseAuthorization added to.
 			if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
@@ -88,9 +92,9 @@ namespace Accessibility
 				mainScreen.LblTrueHeading.Text = e.NewHeading.TrueHeading.ToString () + "º";
 			};
 
-			DateTime endTime = DateTime.Now;
+//			DateTime endTime = DateTime.Now;
 
-			Console.WriteLine (endTime - startTime);
+//			Console.WriteLine (endTime - startTime);
 
 			// start updating our location, et. al.
 			if (CLLocationManager.LocationServicesEnabled)
@@ -101,14 +105,17 @@ namespace Accessibility
 
 		static public void UpdateLocation (IMainScreen ms, CLLocation newLocation)
 		{
+			var watch = System.Diagnostics.Stopwatch.StartNew ();
+
 			ms.LblAltitude.Text = newLocation.Altitude.ToString () + " meters";
 			ms.LblLongitude.Text = newLocation.Coordinate.Longitude.ToString () + "º";
 			ms.LblLatitude.Text = newLocation.Coordinate.Latitude.ToString () + "º";
 			ms.LblCourse.Text = newLocation.Course.ToString () + "º";
 			ms.LblSpeed.Text = newLocation.Speed.ToString () + " meters/s";
+			ms.mapView.ShowsUserLocation = true;
 
-			// get the distance from here to paris
-			ms.LblDistanceToParis.Text = (newLocation.DistanceFrom (new CLLocation (48.857, 2.351)) / 1000).ToString () + " km";
+			watch.Stop ();
+			Console.WriteLine (watch.ElapsedTicks);
 		}
 
 		#region -= protected methods =-

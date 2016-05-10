@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Foundation;
 using UIKit;
+using MapKit;
 
 namespace Accessibility.MainScreen
 {
@@ -14,18 +15,18 @@ namespace Accessibility.MainScreen
 		// The IntPtr and initWithCoder constructors are required for controllers that need
 		// to be able to be created from a xib rather than from managed code
 
-		public MainViewController_iPhone (IntPtr handle) : base(handle)
+		public MainViewController_iPhone (IntPtr handle) : base (handle)
 		{
 			Initialize ();
 		}
 
-		[Export("initWithCoder:")]
-		public MainViewController_iPhone (NSCoder coder) : base(coder)
+		[Export ("initWithCoder:")]
+		public MainViewController_iPhone (NSCoder coder) : base (coder)
 		{
 			Initialize ();
 		}
 
-		public MainViewController_iPhone () : base("MainViewController_iPhone", null)
+		public MainViewController_iPhone () : base ("MainViewController_iPhone", null)
 		{
 			Initialize ();
 		}
@@ -36,38 +37,36 @@ namespace Accessibility.MainScreen
 
 		#endregion
 
-		public UILabel LblAltitude
-		{
+		public UILabel LblAltitude {
 			get { return this.lblAltitude; }
 		}
-		public UILabel LblLatitude
-		{
+
+		public UILabel LblLatitude {
 			get { return this.lblLatitude; }
 		}
-		public UILabel LblLongitude
-		{
+
+		public UILabel LblLongitude {
 			get { return this.lblLongitude; }
 		}
-		public UILabel LblCourse
-		{
+
+		public UILabel LblCourse {
 			get { return this.lblCourse; }
 		}
-		public UILabel LblMagneticHeading
-		{
+
+		public UILabel LblMagneticHeading {
 			get { return this.lblMagneticHeading; }
 		}
-		public UILabel LblSpeed
-		{
+
+		public UILabel LblSpeed {
 			get { return this.lblSpeed; }
 		}
-		public UILabel LblTrueHeading
-		{
+
+		public UILabel LblTrueHeading {
 			get { return this.lblTrueHeading; }
 		}
-		public UILabel LblDistanceToParis
-		{
-			get { return this.lblDistanceToParis; }
-		}
 
+		public MKMapView mapView {
+			get { return this.mapView; }
+		}
 	}
 }
