@@ -1,0 +1,16 @@
+﻿<Properties StartupItem="Accessibility/Accessibility.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Accessibility/Info.plist">
+    <Files>
+      <File FileName="Accessibility/MainScreen/IMainScreen.cs" Line="1" Column="1" />
+      <File FileName="Accessibility/MainScreen/MainViewController.cs" Line="93" Column="44" />
+      <File FileName="Accessibility/MainScreen/MainViewController_iPhone.xib.cs" Line="1" Column="1" />
+      <File FileName="Accessibility/MainScreen/MainViewController_iPhone.xib.designer.cs" Line="1" Column="1" />
+      <File FileName="Accessibility/Info.plist" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

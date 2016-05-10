@@ -44,8 +44,9 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: nalam.pratyush@gmail.com (EYJNRR7TSL)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignProvision>423d03b8-8cc4-48d4-95ab-fcfc62211b37</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>

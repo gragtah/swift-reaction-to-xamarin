@@ -23,16 +23,18 @@ namespace Accessibility
 		#endregion
 
 		#region -= constructors =-
+
 		//
 		// Constructor invoked from the NIB loader
 		//
-		public MainViewController (IntPtr p) : base(p)
+		public MainViewController (IntPtr p) : base (p)
 		{
 		}
 
-		public MainViewController () : base()
+		public MainViewController () : base ()
 		{
 		}
+
 		#endregion
 
 		public override void ViewDidLoad ()
@@ -59,6 +61,8 @@ namespace Accessibility
 			// you can also use presets, which simply evalute to a double value:
 			//iPhoneLocationManager.DesiredAccuracy = CLLocation.AccuracyNearestTenMeters;
 
+			DateTime startTime = DateTime.Now;
+
 			// handle the updated location method and update the UI
 			if (UIDevice.CurrentDevice.CheckSystemVersion (6, 0)) {
 				iPhoneLocationManager.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) => {
@@ -73,17 +77,20 @@ namespace Accessibility
 				#pragma warning restore 618
 			}
 
-            //iOS 8 requires you to manually request authorization now - Note the Info.plist file has a new key called requestWhenInUseAuthorization added to.
-		    if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
-		    {
-		        iPhoneLocationManager.RequestWhenInUseAuthorization();
-		    }
+			//iOS 8 requires you to manually request authorization now - Note the Info.plist file has a new key called requestWhenInUseAuthorization added to.
+			if (UIDevice.CurrentDevice.CheckSystemVersion (8, 0)) {
+				iPhoneLocationManager.RequestWhenInUseAuthorization ();
+			}
 
 			// handle the updated heading method and update the UI
 			iPhoneLocationManager.UpdatedHeading += (object sender, CLHeadingUpdatedEventArgs e) => {
 				mainScreen.LblMagneticHeading.Text = e.NewHeading.MagneticHeading.ToString () + "º";
 				mainScreen.LblTrueHeading.Text = e.NewHeading.TrueHeading.ToString () + "º";
 			};
+
+			DateTime endTime = DateTime.Now;
+
+			Console.WriteLine (endTime - startTime);
 
 			// start updating our location, et. al.
 			if (CLLocationManager.LocationServicesEnabled)
@@ -101,25 +108,25 @@ namespace Accessibility
 			ms.LblSpeed.Text = newLocation.Speed.ToString () + " meters/s";
 
 			// get the distance from here to paris
-			ms.LblDistanceToParis.Text = (newLocation.DistanceFrom(new CLLocation(48.857, 2.351)) / 1000).ToString() + " km";
+			ms.LblDistanceToParis.Text = (newLocation.DistanceFrom (new CLLocation (48.857, 2.351)) / 1000).ToString () + " km";
 		}
 
 		#region -= protected methods =-
 
 		// Loads either the iPad or iPhone view, based on the current device
-		protected void LoadViewForDevice()
+		protected void LoadViewForDevice ()
 		{
 			// load the appropriate view based on the device
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
-					mainViewController_iPad = new MainViewController_iPad ();
-					this.View.AddSubview (mainViewController_iPad.View);
-					mainScreen = mainViewController_iPad as IMainScreen;
+				mainViewController_iPad = new MainViewController_iPad ();
+				this.View.AddSubview (mainViewController_iPad.View);
+				mainScreen = mainViewController_iPad as IMainScreen;
 			} else {
-					mainViewController_iPhone = new MainViewController_iPhone ();
-					var b = this.View.Bounds;
-					this.View.AddSubview (mainViewController_iPhone.View);
-					mainViewController_iPhone.View.Frame = b; // for 4 inch iPhone5 screen
-					mainScreen = mainViewController_iPhone as IMainScreen;
+				mainViewController_iPhone = new MainViewController_iPhone ();
+				var b = this.View.Bounds;
+				this.View.AddSubview (mainViewController_iPhone.View);
+				mainViewController_iPhone.View.Frame = b; // for 4 inch iPhone5 screen
+				mainScreen = mainViewController_iPhone as IMainScreen;
 			}
 		}
 
@@ -131,7 +138,7 @@ namespace Accessibility
 		{
 			IMainScreen ms;
 
-			public LocationDelegate (IMainScreen mainScreen) : base()
+			public LocationDelegate (IMainScreen mainScreen) : base ()
 			{
 				ms = mainScreen;
 			}
