@@ -12,7 +12,7 @@ namespace Accessibility
 		#region -= declarations =-
 
 		MainViewController_iPhone mainViewController_iPhone;
-		MainViewController_iPad mainViewController_iPad;
+//		MainViewController_iPad mainViewController_iPad;
 
 		IMainScreen mainScreen = null;
 
@@ -114,19 +114,14 @@ namespace Accessibility
 
 		// Loads either the iPad or iPhone view, based on the current device
 		protected void LoadViewForDevice ()
-		{
-			// load the appropriate view based on the device
-			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad) {
-				mainViewController_iPad = new MainViewController_iPad ();
-				this.View.AddSubview (mainViewController_iPad.View);
-				mainScreen = mainViewController_iPad as IMainScreen;
-			} else {
+		{			
+//			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Phone) {
 				mainViewController_iPhone = new MainViewController_iPhone ();
 				var b = this.View.Bounds;
 				this.View.AddSubview (mainViewController_iPhone.View);
 				mainViewController_iPhone.View.Frame = b; // for 4 inch iPhone5 screen
 				mainScreen = mainViewController_iPhone as IMainScreen;
-			}
+//			}
 		}
 
 		#endregion

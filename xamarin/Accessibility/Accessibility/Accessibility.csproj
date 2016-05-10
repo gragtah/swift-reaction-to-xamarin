@@ -89,16 +89,11 @@
     <Compile Include="Application.cs" />
     <Compile Include="MainScreen\IMainScreen.cs" />
     <Compile Include="MainScreen\MainViewController.cs" />
-    <Compile Include="MainScreen\MainViewController_iPad.xib.cs" />
-    <Compile Include="MainScreen\MainViewController_iPad.xib.designer.cs">
-      <DependentUpon>MainViewController_iPad.xib.cs</DependentUpon>
-    </Compile>
     <Compile Include="MainScreen\MainViewController_iPhone.xib.cs" />
     <Compile Include="MainScreen\MainViewController_iPhone.xib.designer.cs">
       <DependentUpon>MainViewController_iPhone.xib.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <InterfaceDefinition Include="MainScreen\MainViewController_iPad.xib" />
     <InterfaceDefinition Include="MainScreen\MainViewController_iPhone.xib" />
     <ITunesArtwork Include="Resources\iTunesArtwork%402x" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
